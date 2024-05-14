@@ -1,7 +1,12 @@
 import re
 
 from payrex import BaseService
+from payrex import CheckoutSessionService
+from payrex import MerchantService
 from payrex import PaymentIntentService
+from payrex import PaymentMethodService
+from payrex import RefundService
+from payrex import WebhookService
 
 class ServiceFactory:
     @staticmethod

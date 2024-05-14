@@ -1,10 +1,12 @@
 from payrex import HttpClient
+from payrex import ListingEntity
+from payrex import ApiResource
 
 class BaseService:
     def __init__(self, client):
         self.client = client
 
-    def request(self, method, object, path, payload=None):
+    def request(self, method, object, path, payload=None, is_list=False):
         http_client = HttpClient(
             api_key=self.client.config.api_key,
             base_url=self.client.config.api_base_url
@@ -16,4 +18,9 @@ class BaseService:
             path=path
         )
 
-        return object(api_resource)
+        if is_list:
+            data = [object(ApiResource(data)) for data in api_resource.data['data']]
+
+            return ListingEntity(data, api_resource.data['has_more'])
+        else:
+            return object(api_resource)
