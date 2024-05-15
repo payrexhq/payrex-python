@@ -50,14 +50,14 @@ class HttpClient:
         for key, value in params.items():
             if isinstance(value, list):
                 for item in value:
-                    encoded_params.setdefault(f"{key}[]", []).append(item)
+                    encoded_params.setdefault(f'{key}[]', []).append(item)
             elif isinstance(value, dict):
                 for k, v in value.items():
                     if isinstance(v, dict):
                         for nk, nv in v.items():
-                            encoded_params.setdefault(f"{key}[{k}][{nk}]", []).append(nv)
+                            encoded_params.setdefault(f'{key}[{k}][{nk}]', []).append(nv)
                     else:
-                        encoded_params.setdefault(f"{key}[{k}]", []).append(v)
+                        encoded_params.setdefault(f'{key}[{k}]', []).append(v)
             else:
                 encoded_params[key] = value
 

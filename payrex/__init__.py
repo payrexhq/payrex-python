@@ -5,10 +5,13 @@ from payrex.exceptions.base_exception import BaseException
 from payrex.exceptions.authentication_invalid_exception import AuthenticationInvalidException
 from payrex.exceptions.request_invalid_exception import RequestInvalidException
 from payrex.exceptions.resource_not_found_exception import ResourceNotFoundException
+from payrex.exceptions.signature_invalid_exception import SignatureInvalidException
+from payrex.exceptions.value_unexpected_exception import ValueUnexpectedException
 
 from payrex.http_client import HttpClient
 
 from payrex.entities.checkout_session_entity import CheckoutSessionEntity
+from payrex.entities.event_entity import EventEntity
 from payrex.entities.listing_entity import ListingEntity
 from payrex.entities.merchant_entity import MerchantEntity
 from payrex.entities.payment_intent_entity import PaymentIntentEntity
