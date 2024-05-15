@@ -76,3 +76,20 @@ except BaseException as e:
     print(e.errors[0].detail)
     print(e.errors[0].parameter)
 ```
+
+## Verify webhook signature
+
+```python
+try:
+    payload = '{"id":"evt_...","resource":"event","type":"payment_intent.succeeded","data":{...'
+    signature_header = 't=1715236958,te=,li=...'
+    webhook_secret_key = 'whsk_...'
+
+    payrex_client.webhooks.parse_event(
+        payload,
+        signature_header,
+        webhook_secret_key
+    )
+except SignatureVerificationException as e:
+    # Handle invalid signature
+```
