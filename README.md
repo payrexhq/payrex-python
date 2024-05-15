@@ -44,5 +44,35 @@ Simple usage looks like:
 from payrex import Client as PayrexClient
 
 payrex_client = PayrexClient('sk_test_...')
-payment_intent = payrex_client.payment_intent.retrieve('pi_...')
+payment_intent = payrex_client.payment_intents.retrieve('pi_...')
+
+payment_intent = payrex_client.payment_intents.create(
+    {
+        'amount': 10000,
+        'currency': 'PHP',
+        'description': 'Dino Treat',
+        'payment_methods': ['gcash']
+    }
+)
+```
+
+## Handle errors
+
+```python
+try:
+    payrex_client = PayrexClient('sk_test_...')
+
+    payment_intent = payrex_client.payment_intents.create(
+        {
+            'amount': 10000,
+            'description': 'Dino Treat',
+            'payment_methods': ['gcash']
+        }
+    )
+except BaseException as e:
+    # Handle error
+    print(type(e))
+    print(e.errors[0].code)
+    print(e.errors[0].detail)
+    print(e.errors[0].parameter)
 ```

@@ -6,6 +6,22 @@ class PaymentIntentService(BaseService):
 
     def __init__(self, client):
         BaseService.__init__(self, client)
+
+    def capture(self, id, payload):
+        return self.request(
+            method='post',
+            object=PaymentIntentEntity,
+            path=f'{self.PATH}/{id}/capture',
+            payload=payload
+        )
+    
+    def create(self, payload):
+        return self.request(
+            method='post',
+            object=PaymentIntentEntity,
+            path=self.PATH,
+            payload=payload
+        )
     
     def retrieve(self, id):
         return self.request(

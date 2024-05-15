@@ -9,4 +9,4 @@ class Client:
     def _initialize_services(self):
         for name in ServiceFactory.names():
             service = ServiceFactory.get(name)
-            setattr(self, name, service(self))
+            setattr(self, f'{name}s', service(self))
