@@ -92,5 +92,4 @@ try:
     )
 except SignatureVerificationException as e:
     # Handle invalid signature
-    e.errors[0]
 ```
