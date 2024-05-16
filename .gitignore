@@ -1,3 +1,7 @@
-venv
-payrex_python.egg-info
+build/
+dist/
+
+venv/
+payrex_python.egg-info/
+
 test.py
