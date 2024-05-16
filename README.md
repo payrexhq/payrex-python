@@ -11,7 +11,7 @@ Python 3.9.+
 If you want to use the package, run the following command:
 
 ```sh
-pip3 install payrex-python
+pip install payrex-python
 ```
 
 If you want to build the library from source:
@@ -19,7 +19,7 @@ If you want to build the library from source:
 Create a virtual environment
 
 ```sh
-python3 -m venv venv
+python -m venv venv
 ```
 
 Activate the virtual environment
@@ -31,7 +31,7 @@ source venv/bin/activate
 Install the package to the virtual environment
 
 ```sh
-pip3 install -e /Your/Local/Path/payrex-python
+pip install -e /Your/Local/Path/payrex-python
 
 python
 ```
