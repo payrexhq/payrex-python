@@ -28,13 +28,19 @@ class HttpClient:
 
         response = requests.request(method, url, auth=auth, headers=headers, data=data)
 
-        if response.status_code != 200:
+        if not response.content:
+            raise Exception(response)
+
+        if response.status_code < 200 or response.status_code >= 400:
             self._handle_error(response)
 
         return ApiResource(response.json())
 
     def _handle_error(self, response):
-        json_response_body = response.json()
+        try:
+            json_response_body = response.json()
+        except json.JSONDecodeError:
+            raise Exception(response.content)
 
         if response.status_code == 400:
             raise RequestInvalidException(json_response_body)
