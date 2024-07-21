@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.2] - 2024-07-21
+
+- Add payment_method_options in PaymenIntent resource.
+
 ## [0.1.1] - 2024-05-24
 
 - Update error handling.
