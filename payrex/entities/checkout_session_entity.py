@@ -16,7 +16,6 @@ class CheckoutSessionEntity:
         self.success_url = data.get('success_url')
         self.cancel_url = data.get('cancel_url')
         self.payment_methods = data.get('payment_methods')
-        self.capture_type = data.get('capture_type')
         self.description = data.get('description')
         self.submit_type = data.get('submit_type')
         self.expires_at = data.get('expires_at')

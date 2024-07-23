@@ -5,7 +5,6 @@ class PaymentIntentEntity:
         self.id = data.get('id')
         self.resource = data.get('resource')
         self.amount = data.get('amount')
-        self.capture_type = data.get('capture_type')
         self.client_secret = data.get('client_secret')
         self.currency = data.get('currency')
         self.description = data.get('description')
