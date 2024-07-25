@@ -3,7 +3,6 @@ class PaymentMethodEntity:
         data = api_resource.data
 
         self.id = data.get('id')
-        self.resource = data.get('resource')
         self.type = data.get('type')
         self.billing_details = data.get('billing_details')
         self.livemode = data.get('livemode')

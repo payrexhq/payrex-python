@@ -3,7 +3,6 @@ class RefundEntity:
         data = api_resource.data
 
         self.id = data.get('id')
-        self.resource = data.get('resource')
         self.amount = data.get('amount')
         self.currency = data.get('currency')
         self.livemode = data.get('livemode')

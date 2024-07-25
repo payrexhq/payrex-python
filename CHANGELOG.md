@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.4] - 2024-07-25
+
+- Adjust building of parameter query due to changes in checkout session endpoints.
+
 ## [0.1.3] - 2024-07-23
 
 - Remove deprecated capture_type attribute. capture_type should now be referenced via payment_method_options.card.capture_type.

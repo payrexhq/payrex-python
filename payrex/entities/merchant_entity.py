@@ -3,7 +3,6 @@ class MerchantEntity:
         data = api_resource.data
 
         self.id = data.get('id')
-        self.resource = data.get('resource')
         self.connection_type = data.get('connection_type')
         self.livemode = data.get('livemode')
         self.created_at = data.get('created_at')

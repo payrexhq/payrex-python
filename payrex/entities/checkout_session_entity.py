@@ -1,9 +1,11 @@
+from payrex import PaymentIntentEntity
+from payrex import ApiResource
+
 class CheckoutSessionEntity:
     def __init__(self, api_resource):
         data = api_resource.data
 
         self.id = data.get('id')
-        self.resource = data.get('resource')
         self.customer_reference_id = data.get('customer_reference_id')
         self.client_secret = data.get('client_secret')
         self.status = data.get('status')
@@ -11,7 +13,7 @@ class CheckoutSessionEntity:
         self.line_items = data.get('line_items')
         self.livemode = data.get('livemode')
         self.url = data.get('url')
-        self.payment_intent = data.get('payment_intent')
+        self.payment_intent = PaymentIntentEntity(ApiResource(data.get('payment_intent')))
         self.metadata = data.get('metadata')
         self.success_url = data.get('success_url')
         self.cancel_url = data.get('cancel_url')

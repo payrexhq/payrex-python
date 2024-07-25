@@ -10,11 +10,11 @@ from payrex.exceptions.value_unexpected_exception import ValueUnexpectedExceptio
 
 from payrex.http_client import HttpClient
 
+from payrex.entities.payment_intent_entity import PaymentIntentEntity
 from payrex.entities.checkout_session_entity import CheckoutSessionEntity
 from payrex.entities.event_entity import EventEntity
 from payrex.entities.listing_entity import ListingEntity
 from payrex.entities.merchant_entity import MerchantEntity
-from payrex.entities.payment_intent_entity import PaymentIntentEntity
 from payrex.entities.payment_method_entity import PaymentMethodEntity
 from payrex.entities.refund_entity import RefundEntity
 from payrex.entities.webhook_entity import WebhookEntity

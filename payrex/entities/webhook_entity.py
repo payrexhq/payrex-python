@@ -3,7 +3,6 @@ class WebhookEntity:
         data = api_resource.data
 
         self.id = data.get('id')
-        self.resource = data.get('resource')
         self.secret_key = data.get('secret_key')
         self.status = data.get('status')
         self.description = data.get('description')
