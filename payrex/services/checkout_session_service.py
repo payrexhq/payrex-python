@@ -15,7 +15,7 @@ class CheckoutSessionService(BaseService):
             payload=payload
         )
 
-    def list(self, payload):
+    def list(self, payload = {}):
         return self.request(
             method='get',
             object=CheckoutSessionEntity,

@@ -1,4 +1,4 @@
-class CheckoutSessionEntity:
+class BillingStatementEntity:
     def __init__(self, api_resource):
         data = api_resource.data
 

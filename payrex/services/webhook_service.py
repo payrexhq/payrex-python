@@ -4,6 +4,7 @@ import hmac
 
 from payrex import BaseService
 from payrex import WebhookEntity
+from payrex import DeletedEntity
 from payrex import ValueUnexpectedException
 from payrex import SignatureInvalidException
 from payrex import ApiResource
@@ -31,7 +32,7 @@ class WebhookService(BaseService):
             payload=payload
         )
 
-    def list(self, payload):
+    def list(self, payload = {}):
         return self.request(
             method='get',
             object=WebhookEntity,
@@ -67,7 +68,7 @@ class WebhookService(BaseService):
     def delete(self, id):
         return self.request(
             method='delete',
-            object=WebhookEntity,
+            object=DeletedEntity,
             path=f'{self.PATH}/{id}',
             payload={}
         )

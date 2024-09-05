@@ -2,9 +2,10 @@ import re
 
 from payrex import BaseService
 from payrex import CheckoutSessionService
-from payrex import MerchantService
+from payrex import CustomerService
+from payrex import BillingStatementService
+from payrex import BillingStatementLineItemService
 from payrex import PaymentIntentService
-from payrex import PaymentMethodService
 from payrex import RefundService
 from payrex import WebhookService
 
