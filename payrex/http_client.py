@@ -37,13 +37,16 @@ class HttpClient:
 
         response = requests.request(method, url, auth=auth, headers=headers, data=data)
 
-        if not response.content:
-            raise Exception(response)
-
         if response.status_code < 200 or response.status_code >= 400:
             self._handle_error(response)
 
-        return ApiResource(response.json())
+        if response.text == '':
+            return None
+        else:
+            if not response.content:
+                raise Exception(response)
+
+            return ApiResource(response.json())
 
     def _http_build_query(self, params, parent_key='', sep='&'):
         items = []

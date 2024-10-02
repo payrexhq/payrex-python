@@ -57,6 +57,14 @@ class BillingStatementService(BaseService):
             payload={}
         )
 
+    def send(self, id):
+        return self.request(
+            method='post',
+            object=None,
+            path=f'{self.PATH}/{id}/send',
+            payload={}
+        )
+
     def void(self, id):
         return self.request(
             method='post',

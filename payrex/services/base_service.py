@@ -22,5 +22,7 @@ class BaseService:
             data = [object(ApiResource(data)) for data in api_resource.data['data']]
 
             return ListingEntity(data, api_resource.data['has_more'])
+        elif object is None:
+            return None
         else:
             return object(api_resource)
