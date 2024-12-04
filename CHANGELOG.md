@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.2] - 2024-12-04
+
+- Resolve bug.
+
 ## [1.0.1] - 2024-10-02
 
 - Add send billing statement via email endpoint.
