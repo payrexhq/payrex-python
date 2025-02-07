@@ -15,6 +15,7 @@ class PaymentIntentEntity:
         self.payment_method_id = data.get('payment_method_id')
         self.payment_methods = data.get('payment_methods')
         self.payment_method_options = data.get('payment_method_options')
+        self.statement_descriptor = data.get('statement_descriptor')
         self.status = data.get('status')
         self.next_action = data.get('next_action')
         self.return_url = data.get('return_url')
