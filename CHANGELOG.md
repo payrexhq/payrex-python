@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2025-02-07
+
+- Add statement_descriptor support for payment intents.
+- Add statement_descriptor support for billing statements.
+
 ## [1.0.2] - 2024-12-04
 
 - Resolve bug.
