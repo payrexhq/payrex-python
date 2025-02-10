@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.0] - 2025-02-10
+
+- Add billing_details_collection support for checkout sessions.
+- Add billing_details_collection support for billing statements.
+
 ## [1.1.0] - 2025-02-07
 
 - Add statement_descriptor support for payment intents.
