@@ -9,5 +9,7 @@ class CustomerSessionEntity:
         self.livemode = data.get('livemode')
         self.payment_intent_id = data.get('payment_intent_id')
         self.components = data.get('components')
+        self.expired = data.get('expired')
+        self.expired_at = data.get('expired_at')
         self.created_at = data.get('created_at')
         self.updated_at = data.get('updated_at')
