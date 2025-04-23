@@ -14,3 +14,11 @@ class RefundService(BaseService):
             path=self.PATH,
             payload=payload
         )
+
+    def update(self, id, payload):
+        return self.request(
+            method='put',
+            object=RefundEntity,
+            path=f'{self.PATH}/{id}',
+            payload=payload
+        )

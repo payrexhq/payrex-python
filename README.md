@@ -34,7 +34,6 @@ Install the package to the virtual environment
 pip install -e /Your/Local/Path/payrex-python
 
 python
-```
 
 ## Getting Started
 
