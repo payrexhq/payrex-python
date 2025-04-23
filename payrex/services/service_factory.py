@@ -2,6 +2,7 @@ import re
 
 from payrex import BaseService
 from payrex import CheckoutSessionService
+from payrex import CustomerSessionService
 from payrex import CustomerService
 from payrex import BillingStatementService
 from payrex import BillingStatementLineItemService
