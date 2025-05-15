@@ -6,3 +6,5 @@ venv/
 payrex_python.egg-info/
 
 test.py
+
+.DS_Store
