@@ -24,18 +24,24 @@ class HttpClient:
             'Content-Type': 'application/x-www-form-urlencoded'
         }
 
-        if method.lower() in ['post', 'put', 'delete']:
-            data = re.sub(
-                r'%5B[\d+]%5D', 
-                '%5B%5D',
-                urlencode(
-                    self._http_build_query(params)
+        if params is not None and params != {}:
+            if method.lower() in ['post', 'put']:
+                data = re.sub(
+                    r'%5B[\d+]%5D', 
+                    '%5B%5D',
+                    urlencode(
+                        self._http_build_query(params)
+                    )
                 )
-            )
+            else:
+                data = params
         else:
             data = None
 
-        response = requests.request(method, url, auth=auth, headers=headers, data=data)
+        if method.lower() in ['post', 'put']:
+            response = requests.request(method, url, auth=auth, headers=headers, data=data)
+        else:
+            response = requests.request(method, url, auth=auth, headers=headers, params=data)
 
         if response.status_code < 200 or response.status_code >= 400:
             self._handle_error(response)
