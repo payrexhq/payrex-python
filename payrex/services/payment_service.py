@@ -14,3 +14,11 @@ class PaymentService(BaseService):
             path=f'{self.PATH}/{id}',
             payload={}
         )
+
+    def update(self, id, payload):
+        return self.request(
+            method='put',
+            object=PaymentEntity,
+            path=f'{self.PATH}/{id}',
+            payload=payload
+        )
