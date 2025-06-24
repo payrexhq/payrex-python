@@ -4,6 +4,8 @@ class BillingStatementEntity:
 
         self.id = data.get('id')
         self.billing_details_collection = data.get('billing_details_collection')
+        self.billing_statement_merchant_name = data.get('billing_statement_merchant_name')
+        self.billing_statement_number = data.get('billing_statement_number')
         self.customer_reference_id = data.get('customer_reference_id')
         self.client_secret = data.get('client_secret')
         self.status = data.get('status')
