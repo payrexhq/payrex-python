@@ -18,6 +18,7 @@ class BillingStatementEntity:
         self.success_url = data.get('success_url')
         self.cancel_url = data.get('cancel_url')
         self.payment_methods = data.get('payment_methods')
+        self.setup_future_usage = data.get('setup_future_usage')
         self.statement_descriptor = data.get('statement_descriptor')
         self.description = data.get('description')
         self.submit_type = data.get('submit_type')
