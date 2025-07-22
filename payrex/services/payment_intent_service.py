@@ -7,6 +7,13 @@ class PaymentIntentService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
+    def cancel(self, id):
+        return self.request(
+            method='post',
+            object=PaymentIntentEntity,
+            path=f'{self.PATH}/{id}/cancel'
+        )
+
     def capture(self, id, payload):
         return self.request(
             method='post',
