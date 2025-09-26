@@ -1,6 +1,9 @@
-class Config:
-    API_BASE_URL = 'https://api.payrexhq.com'
+from typing import Final
 
-    def __init__(self, api_key):
-        self.api_base_url = self.API_BASE_URL
-        self.api_key = api_key
+
+class Config:
+    API_BASE_URL: Final[str] = 'https://api.payrexhq.com'
+
+    def __init__(self, api_key: str):
+        self.api_base_url: str = self.API_BASE_URL
+        self.api_key: str = api_key
