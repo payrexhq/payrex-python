@@ -14,7 +14,7 @@ class PaymentIntentEntity:
         self.amount_capturable: int = data.get('amount_capturable')
         self.client_secret: str = data.get('client_secret')
         self.currency: Currency = data.get('currency')
-        self.description: str = data.get('description')
+        self.description: str | None = data.get('description')
         self.livemode: bool = data.get('livemode')
         self.metadata: dict[str, str] | None = data.get('metadata')
         self.latest_payment = data.get('latest_payment')
