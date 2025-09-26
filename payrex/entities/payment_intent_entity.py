@@ -22,7 +22,9 @@ class PaymentIntentEntity:
         self.payment_methods: list[PaymentMethod] = data.get('payment_methods')
         self.payment_method_options: PaymentMethodOptions | None = data.get('payment_method_options')
         self.statement_descriptor: str | None = data.get('statement_descriptor')
-        self.status: PaymentIntentStatus = data.get('status')
+        self.status: Literal[
+            'awaiting_payment_method', 'awaiting_next_action', 'processing', 'succeeded'
+        ] = data.get('status')
         self.next_action: NextAction | None = data.get('next_action')
         self.return_url: str = data.get('return_url')
         self.capture_before_at = data.get('capture_before_at')
@@ -38,11 +40,6 @@ class PaymentMethodCard(TypedDict):
     capture_type: NotRequired[Literal['automatic', 'manual']]
     allowed_bins: NotRequired[list[str]]
     allowed_funding: NotRequired[Literal['credit', 'debit']]
-
-
-PaymentIntentStatus = Literal[
-    'awaiting_payment_method', 'awaiting_next_action', 'processing', 'succeeded'
-]
 
 
 class NextAction(TypedDict):

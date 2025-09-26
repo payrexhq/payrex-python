@@ -10,7 +10,12 @@ class PayoutEntity:
         self.destination: PayoutDestination = data.get('destination')
         self.livemode: bool = data.get('livemode')
         self.net_amount: int = data.get('net_amount')
-        self.status: PayoutStatus = data.get('status')
+        self.status: Literal[
+            "pending",
+            "in_transit",
+            "failed",
+            "successful",
+        ] = data.get('status')
         self.created_at: int = data.get('created_at')
         self.updated_at: int = data.get('updated_at')
 
@@ -19,11 +24,3 @@ class PayoutDestination(TypedDict):
     account_name: str
     account_number: str
     bank_name: str
-
-
-PayoutStatus = Literal[
-    "pending",
-    "in_transit",
-    "failed",
-    "successful",
-]

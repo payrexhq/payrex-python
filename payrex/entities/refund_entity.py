@@ -13,21 +13,18 @@ class RefundEntity:
         self.livemode: bool = data.get('livemode')
         self.status: Literal["succeeded", "failed", "pending"] = data.get('status')
         self.description: str | None = data.get('description')
-        self.reason: RefundReason = data.get('reason')
+        self.reason: Literal[
+            "fraudulent",
+            "requested_by_customer",
+            "product_out_of_stock",
+            "service_not_provided",
+            "product_was_damaged",
+            "service_misaligned",
+            "wrong_product_received",
+            "others",
+        ] = data.get('reason')
         self.remarks: str | None = data.get('remarks')
         self.payment_id: str = data.get('payment_id')
         self.metadata: dict[str, str] | None = data.get('metadata')
         self.created_at: int = data.get('created_at')
         self.updated_at: int = data.get('updated_at')
-
-
-RefundReason = Literal[
-    "fraudulent",
-    "requested_by_customer",
-    "product_out_of_stock",
-    "service_not_provided",
-    "product_was_damaged",
-    "service_misaligned",
-    "wrong_product_received",
-    "others",
-]
