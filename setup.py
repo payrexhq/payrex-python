@@ -11,7 +11,8 @@ setup(
     long_description_content_type='text/markdown',
     packages=find_packages(),
     install_requires=[
-        'requests'
+        'requests',
+        'typing-extensions'
     ],
     keywords='payrex',
     classifiers=[
