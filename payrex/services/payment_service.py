@@ -1,3 +1,5 @@
+from typing import TypedDict
+from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import PaymentEntity
 
@@ -7,7 +9,7 @@ class PaymentService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def retrieve(self, id):
+    def retrieve(self, id: str) -> PaymentEntity:
         return self.request(
             method='get',
             object=PaymentEntity,
@@ -15,10 +17,15 @@ class PaymentService(BaseService):
             payload={}
         )
 
-    def update(self, id, payload):
+    def update(self, id: str, payload: 'UpdatePaymentParams') -> PaymentEntity:
         return self.request(
             method='put',
             object=PaymentEntity,
             path=f'{self.PATH}/{id}',
             payload=payload
         )
+
+
+class UpdatePaymentParams(TypedDict):
+    description: NotRequired[str]
+    metadata: NotRequired[dict[str, object]]
