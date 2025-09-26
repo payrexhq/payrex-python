@@ -9,7 +9,7 @@ class PaymentEntity:
         self.id: str = data.get('id')
         self.amount: int = data.get('amount')
         self.amount_refunded: int = data.get('amount_refunded')
-        self.billing: 'Billing' = data.get('billing')
+        self.billing: Billing = data.get('billing')
         self.currency: Currency = data.get('currency')
         self.description: str | None = data.get('description')
         self.fee: int = data.get('fee')
