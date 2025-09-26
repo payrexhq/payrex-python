@@ -1,5 +1,8 @@
+from typing import TypedDict
+from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import PayoutTransactionEntity
+from payrex.entities.listing_entity import ListingEntity
 
 class PayoutService(BaseService):
     PATH = 'payouts'
@@ -7,7 +10,11 @@ class PayoutService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def list_transactions(self, id, payload = {}):
+    def list_transactions(
+        self,
+        id: str,
+        payload: 'ListPayoutTransactionsParams' = {}
+    ) -> ListingEntity[PayoutTransactionEntity]:
         return self.request(
             method='get',
             object=PayoutTransactionEntity,
@@ -15,3 +22,9 @@ class PayoutService(BaseService):
             payload=payload,
             is_list=True
         )
+
+
+class ListPayoutTransactionsParams(TypedDict):
+    limit: NotRequired[int]
+    before: NotRequired[str]
+    after: NotRequired[str]
