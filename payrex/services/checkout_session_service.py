@@ -11,7 +11,7 @@ class CheckoutSessionService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload: 'CreateCheckoutSessionParams') -> CheckoutSessionEntity:
+    def create(self, payload: 'CreateCheckoutSessionPayload') -> CheckoutSessionEntity:
         return self.request(
             method='post',
             object=CheckoutSessionEntity,
@@ -19,7 +19,7 @@ class CheckoutSessionService(BaseService):
             payload=payload
         )
 
-    def list(self, payload: 'ListCheckoutSessionsParams' = {}) -> ListingEntity[CheckoutSessionEntity]:
+    def list(self, payload: 'ListCheckoutSessionsPayload' = {}) -> ListingEntity[CheckoutSessionEntity]:
         return self.request(
             method='get',
             object=CheckoutSessionEntity,
@@ -45,10 +45,10 @@ class CheckoutSessionService(BaseService):
         )
 
 
-class CreateCheckoutSessionParams(TypedDict):
+class CreateCheckoutSessionPayload(TypedDict):
     customer_reference_id: NotRequired[str]
     currency: Currency
-    line_items: 'list[NewLineItemParams]'
+    line_items: 'list[NewLineItemPayload]'
     metadata: NotRequired[dict[str, str]]
     success_url: str
     cancel_url: str
@@ -61,7 +61,7 @@ class CreateCheckoutSessionParams(TypedDict):
 
 
 
-class NewLineItemParams(TypedDict):
+class NewLineItemPayload(TypedDict):
     name: str
     amount: int
     quantity: int
@@ -69,7 +69,7 @@ class NewLineItemParams(TypedDict):
     image: NotRequired[str]
 
 
-class ListCheckoutSessionsParams(TypedDict):
+class ListCheckoutSessionsPayload(TypedDict):
     # TODO: add parameters when API reference for 'GET /checkout_sessions'
     # is implemented
     pass

@@ -17,7 +17,7 @@ class PaymentService(BaseService):
             payload={}
         )
 
-    def update(self, id: str, payload: 'UpdatePaymentParams') -> PaymentEntity:
+    def update(self, id: str, payload: 'UpdatePaymentPayload') -> PaymentEntity:
         return self.request(
             method='put',
             object=PaymentEntity,
@@ -26,6 +26,6 @@ class PaymentService(BaseService):
         )
 
 
-class UpdatePaymentParams(TypedDict):
+class UpdatePaymentPayload(TypedDict):
     description: NotRequired[str]
     metadata: NotRequired[dict[str, str]]

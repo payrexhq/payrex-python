@@ -13,7 +13,7 @@ class PayoutService(BaseService):
     def list_transactions(
         self,
         id: str,
-        payload: 'ListPayoutTransactionsParams' = {}
+        payload: 'ListPayoutTransactionsPayload' = {}
     ) -> ListingEntity[PayoutTransactionEntity]:
         return self.request(
             method='get',
@@ -24,7 +24,7 @@ class PayoutService(BaseService):
         )
 
 
-class ListPayoutTransactionsParams(TypedDict):
+class ListPayoutTransactionsPayload(TypedDict):
     limit: NotRequired[int]
     before: NotRequired[str]
     after: NotRequired[str]

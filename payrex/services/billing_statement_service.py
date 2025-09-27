@@ -13,7 +13,7 @@ class BillingStatementService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload: 'CreateBillingStatementParams') -> BillingStatementEntity:
+    def create(self, payload: 'CreateBillingStatementPayload') -> BillingStatementEntity:
         return self.request(
             method='post',
             object=BillingStatementEntity,
@@ -29,7 +29,7 @@ class BillingStatementService(BaseService):
             payload={}
         )
 
-    def list(self, payload: 'ListBillingStatementsParams' = {}) -> ListingEntity[BillingStatementEntity]:
+    def list(self, payload: 'ListBillingStatementsPayload' = {}) -> ListingEntity[BillingStatementEntity]:
         return self.request(
             method='get',
             object=BillingStatementEntity,
@@ -38,7 +38,7 @@ class BillingStatementService(BaseService):
             is_list=True
         )
 
-    def update(self, id: str, payload: 'UpdateBillingStatementParams') -> BillingStatementEntity:
+    def update(self, id: str, payload: 'UpdateBillingStatementPayload') -> BillingStatementEntity:
         return self.request(
             method='put',
             object=BillingStatementEntity,
@@ -87,7 +87,7 @@ class BillingStatementService(BaseService):
         )
 
 
-class CreateBillingStatementParams(TypedDict):
+class CreateBillingStatementPayload(TypedDict):
     customer_id: str
     currency: Currency
     description: NotRequired[str]
@@ -96,13 +96,13 @@ class CreateBillingStatementParams(TypedDict):
     metadata: NotRequired[dict[str, str]]
 
 
-class ListBillingStatementsParams(TypedDict):
+class ListBillingStatementsPayload(TypedDict):
     limit: NotRequired[int]
     before: NotRequired[str]
     after: NotRequired[str]
 
 
-class UpdateBillingStatementParams(TypedDict):
+class UpdateBillingStatementPayload(TypedDict):
     customer_id: NotRequired[str]
     description: NotRequired[str]
     billing_details_collection: NotRequired[str]

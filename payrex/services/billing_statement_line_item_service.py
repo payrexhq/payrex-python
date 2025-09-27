@@ -10,7 +10,7 @@ class BillingStatementLineItemService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload: 'CreateBillingStatementLineItemParams') -> BillingStatementLineItemEntity:
+    def create(self, payload: 'CreateBillingStatementLineItemPayload') -> BillingStatementLineItemEntity:
         return self.request(
             method='post',
             object=BillingStatementLineItemEntity,
@@ -26,7 +26,7 @@ class BillingStatementLineItemService(BaseService):
             payload={}
         )
 
-    def update(self, id: str, payload: 'UpdateBillingStatementLineItemParams') -> BillingStatementLineItemEntity:
+    def update(self, id: str, payload: 'UpdateBillingStatementLineItemPayload') -> BillingStatementLineItemEntity:
         return self.request(
             method='put',
             object=BillingStatementLineItemEntity,
@@ -43,14 +43,14 @@ class BillingStatementLineItemService(BaseService):
         )
 
 
-class CreateBillingStatementLineItemParams(TypedDict):
+class CreateBillingStatementLineItemPayload(TypedDict):
     billing_statement_id: str
     description: str
     unit_price: int
     quantity: int
 
 
-class UpdateBillingStatementLineItemParams(TypedDict):
+class UpdateBillingStatementLineItemPayload(TypedDict):
     description: NotRequired[str]
     unit_price: NotRequired[int]
     quantity: NotRequired[int]

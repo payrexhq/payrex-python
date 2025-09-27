@@ -17,7 +17,7 @@ class PaymentIntentService(BaseService):
             path=f'{self.PATH}/{id}/cancel'
         )
 
-    def capture(self, id: str, payload: 'CapturePaymentIntentParams') -> PaymentIntentEntity:
+    def capture(self, id: str, payload: 'CapturePaymentIntentPayload') -> PaymentIntentEntity:
         return self.request(
             method='post',
             object=PaymentIntentEntity,
@@ -25,7 +25,7 @@ class PaymentIntentService(BaseService):
             payload=payload
         )
 
-    def create(self, payload: 'CreatePaymentIntentParams') -> PaymentIntentEntity:
+    def create(self, payload: 'CreatePaymentIntentPayload') -> PaymentIntentEntity:
         return self.request(
             method='post',
             object=PaymentIntentEntity,
@@ -42,11 +42,11 @@ class PaymentIntentService(BaseService):
         )
 
 
-class CapturePaymentIntentParams(TypedDict):
+class CapturePaymentIntentPayload(TypedDict):
     amount: int
 
 
-class CreatePaymentIntentParams(TypedDict):
+class CreatePaymentIntentPayload(TypedDict):
     amount: int
     payment_methods: list[PaymentMethod]
     currency: Currency

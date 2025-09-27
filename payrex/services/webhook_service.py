@@ -20,7 +20,7 @@ class WebhookService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload: 'CreateWebhookParams') -> WebhookEntity:
+    def create(self, payload: 'CreateWebhookPayload') -> WebhookEntity:
         return self.request(
             method='post',
             object=WebhookEntity,
@@ -28,7 +28,7 @@ class WebhookService(BaseService):
             payload=payload
         )
 
-    def update(self, id: str, payload: 'UpdateWebhookParams') -> WebhookEntity:
+    def update(self, id: str, payload: 'UpdateWebhookPayload') -> WebhookEntity:
         return self.request(
             method='put',
             object=WebhookEntity,
@@ -36,7 +36,7 @@ class WebhookService(BaseService):
             payload=payload
         )
 
-    def list(self, payload: 'ListWebhooksParams' = {}) -> ListingEntity[WebhookEntity]:
+    def list(self, payload: 'ListWebhooksPayload' = {}) -> ListingEntity[WebhookEntity]:
         return self.request(
             method='get',
             object=WebhookEntity,
@@ -102,19 +102,19 @@ class WebhookService(BaseService):
         return EventEntity(api_resource)
 
 
-class CreateWebhookParams(TypedDict):
+class CreateWebhookPayload(TypedDict):
     url: str
     description: NotRequired[str]
     events: list[EventType]
 
 
-class UpdateWebhookParams(TypedDict):
+class UpdateWebhookPayload(TypedDict):
     url: NotRequired[str]
     description: NotRequired[str]
     events: NotRequired[list[EventType]]
 
 
-class ListWebhooksParams(TypedDict):
+class ListWebhooksPayload(TypedDict):
     limit: NotRequired[int]
     before: NotRequired[str]
     after: NotRequired[str]

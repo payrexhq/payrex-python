@@ -8,7 +8,7 @@ class CustomerSessionService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload: 'CreateCustomerSessionParams') -> CustomerSessionEntity:
+    def create(self, payload: 'CreateCustomerSessionPayload') -> CustomerSessionEntity:
         return self.request(
             method='post',
             object=CustomerSessionEntity,
@@ -25,7 +25,7 @@ class CustomerSessionService(BaseService):
         )
 
 
-class CreateCustomerSessionParams(TypedDict):
+class CreateCustomerSessionPayload(TypedDict):
     # TODO: add additional keys when API reference for 'POST /customer_sessions'
     # is implemented
     customer_id: str

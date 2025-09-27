@@ -11,7 +11,7 @@ class RefundService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload: 'CreateRefundParams') -> RefundEntity:
+    def create(self, payload: 'CreateRefundPayload') -> RefundEntity:
         return self.request(
             method='post',
             object=RefundEntity,
@@ -19,7 +19,7 @@ class RefundService(BaseService):
             payload=payload
         )
 
-    def update(self, id: str, payload: 'UpdateRefundParams') -> RefundEntity:
+    def update(self, id: str, payload: 'UpdateRefundPayload') -> RefundEntity:
         return self.request(
             method='put',
             object=RefundEntity,
@@ -28,7 +28,7 @@ class RefundService(BaseService):
         )
 
 
-class CreateRefundParams(TypedDict):
+class CreateRefundPayload(TypedDict):
     amount: int
     currency: Currency
     description: NotRequired[str]
@@ -38,5 +38,5 @@ class CreateRefundParams(TypedDict):
     metadata: NotRequired[dict[str, str]]
 
 
-class UpdateRefundParams(TypedDict):
+class UpdateRefundPayload(TypedDict):
     metadata: NotRequired[dict[str, str]]

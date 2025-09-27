@@ -12,7 +12,7 @@ class CustomerService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload: 'CreateCustomerParams') -> CustomerEntity:
+    def create(self, payload: 'CreateCustomerPayload') -> CustomerEntity:
         return self.request(
             method='post',
             object=CustomerEntity,
@@ -28,7 +28,7 @@ class CustomerService(BaseService):
             payload={}
         )
 
-    def list(self, payload: 'ListCustomersParams' = {}) -> ListingEntity[CustomerEntity]:
+    def list(self, payload: 'ListCustomersPayload' = {}) -> ListingEntity[CustomerEntity]:
         return self.request(
             method='get',
             object=CustomerEntity,
@@ -37,7 +37,7 @@ class CustomerService(BaseService):
             is_list=True
         )
 
-    def update(self, id: str, payload: 'UpdateCustomerParams') -> CustomerEntity:
+    def update(self, id: str, payload: 'UpdateCustomerPayload') -> CustomerEntity:
         return self.request(
             method='put',
             object=CustomerEntity,
@@ -54,7 +54,7 @@ class CustomerService(BaseService):
         )
 
 
-class CreateCustomerParams(TypedDict):
+class CreateCustomerPayload(TypedDict):
     currency: Currency
     name: str
     email: str
@@ -63,7 +63,7 @@ class CreateCustomerParams(TypedDict):
     metadata: NotRequired[dict[str, str]]
 
 
-class ListCustomersParams(TypedDict):
+class ListCustomersPayload(TypedDict):
     limit: NotRequired[int]
     before: NotRequired[str]
     after: NotRequired[str]
@@ -72,7 +72,7 @@ class ListCustomersParams(TypedDict):
     metadata: NotRequired[dict[str, str]]
 
 
-class UpdateCustomerParams(TypedDict):
+class UpdateCustomerPayload(TypedDict):
     currency: NotRequired[Currency]
     name: NotRequired[str]
     email: NotRequired[str]
