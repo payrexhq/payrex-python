@@ -5,7 +5,7 @@ from payrex import BillingStatementEntity
 from payrex import DeletedEntity
 from payrex.entities.billing_statement_entity import PaymentSettings
 from payrex.entities.listing_entity import ListingEntity
-from payrex.type_defs import Currency
+from payrex.common_types import Currency
 
 class BillingStatementService(BaseService):
     PATH = 'billing_statements'

@@ -2,7 +2,7 @@ from typing import Literal, TypedDict
 from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import PaymentIntentEntity
-from payrex.type_defs import Currency, PaymentMethod, PaymentMethodOptionsPayload
+from payrex.common_types import Currency, PaymentMethod, PaymentMethodOptionsPayload
 
 class PaymentIntentService(BaseService):
     PATH = 'payment_intents'

@@ -1,7 +1,7 @@
 from typing import Literal, Optional, TypedDict
 from typing_extensions import NotRequired
 
-from payrex.type_defs import Currency, PaymentMethod, PaymentMethodOptions
+from payrex.common_types import Currency, PaymentMethod, PaymentMethodOptions
 
 
 class PaymentIntentEntity:

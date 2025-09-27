@@ -1,6 +1,6 @@
 from typing import Any, Literal, Optional, TypedDict
 from typing_extensions import NotRequired
-from payrex.type_defs import Currency, PaymentMethod
+from payrex.common_types import Currency, PaymentMethod
 
 
 class CheckoutSessionEntity:

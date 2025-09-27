@@ -3,7 +3,7 @@ from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import RefundEntity
 from payrex.entities.refund_entity import RefundReason
-from payrex.type_defs import Currency
+from payrex.common_types import Currency
 
 class RefundService(BaseService):
     PATH = 'refunds'

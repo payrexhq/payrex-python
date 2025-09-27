@@ -1,5 +1,5 @@
 from typing import Literal, Optional, TypedDict
-from payrex.type_defs import Currency, PaymentMethod
+from payrex.common_types import Currency, PaymentMethod
 
 
 class PaymentEntity:

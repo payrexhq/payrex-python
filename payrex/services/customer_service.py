@@ -4,7 +4,7 @@ from payrex import BaseService
 from payrex import CustomerEntity
 from payrex import DeletedEntity
 from payrex.entities.listing_entity import ListingEntity
-from payrex.type_defs import Currency
+from payrex.common_types import Currency
 
 class CustomerService(BaseService):
     PATH = 'customers'

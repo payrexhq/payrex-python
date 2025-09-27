@@ -1,5 +1,5 @@
 from typing import Optional
-from payrex.type_defs import Currency
+from payrex.common_types import Currency
 
 
 class CustomerEntity:

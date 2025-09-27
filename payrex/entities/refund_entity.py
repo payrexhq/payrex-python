@@ -1,6 +1,6 @@
 from typing import Literal, Optional
 
-from payrex.type_defs import Currency
+from payrex.common_types import Currency
 
 class RefundEntity:
     def __init__(self, api_resource):
