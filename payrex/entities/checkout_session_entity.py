@@ -17,7 +17,7 @@ class CheckoutSessionEntity:
         self.livemode: bool = data.get('livemode')
         self.url: str = data.get('url')
         self.payment_intent: dict[str, Any] = data.get('payment_intent') # TODO: payment_intent type hint
-        self.metadata: dict[str, str] = data.get('metadata')
+        self.metadata: Optional[dict[str, str]] = data.get('metadata')
         self.success_url: str = data.get('success_url')
         self.cancel_url: str = data.get('cancel_url')
         self.payment_methods: list[PaymentMethod] = data.get('payment_methods')
