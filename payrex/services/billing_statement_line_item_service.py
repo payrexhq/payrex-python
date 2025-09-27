@@ -1,3 +1,5 @@
+from typing import TypedDict
+from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import BillingStatementLineItemEntity
 from payrex import DeletedEntity
@@ -8,7 +10,7 @@ class BillingStatementLineItemService(BaseService):
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload):
+    def create(self, payload: 'CreateBillingStatementLineItemParams') -> BillingStatementLineItemEntity:
         return self.request(
             method='post',
             object=BillingStatementLineItemEntity,
@@ -16,7 +18,7 @@ class BillingStatementLineItemService(BaseService):
             payload=payload
         )
 
-    def retrieve(self, id):
+    def retrieve(self, id: str) -> BillingStatementLineItemEntity:
         return self.request(
             method='get',
             object=BillingStatementLineItemEntity,
@@ -24,7 +26,7 @@ class BillingStatementLineItemService(BaseService):
             payload={}
         )
 
-    def update(self, id, payload):
+    def update(self, id: str, payload: 'UpdateBillingStatementLineItemParams') -> BillingStatementLineItemEntity:
         return self.request(
             method='put',
             object=BillingStatementLineItemEntity,
@@ -32,10 +34,23 @@ class BillingStatementLineItemService(BaseService):
             payload=payload
         )
 
-    def delete(self, id):
+    def delete(self, id: str) -> DeletedEntity:
         return self.request(
             method='delete',
             object=DeletedEntity,
             path=f'{self.PATH}/{id}',
             payload={}
         )
+
+
+class CreateBillingStatementLineItemParams(TypedDict):
+    billing_statement_id: str
+    description: str
+    unit_price: int
+    quantity: int
+
+
+class UpdateBillingStatementLineItemParams(TypedDict):
+    description: NotRequired[str]
+    unit_price: NotRequired[int]
+    quantity: NotRequired[int]
