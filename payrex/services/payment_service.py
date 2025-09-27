@@ -28,4 +28,4 @@ class PaymentService(BaseService):
 
 class UpdatePaymentParams(TypedDict):
     description: NotRequired[str]
-    metadata: NotRequired[dict[str, object]]
+    metadata: NotRequired[dict[str, str]]
