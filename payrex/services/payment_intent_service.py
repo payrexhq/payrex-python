@@ -1,11 +1,11 @@
-from typing import Literal, TypedDict
+from typing import Final, Literal, TypedDict
 from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import PaymentIntentEntity
 from payrex.common_types import Currency, PaymentMethod, PaymentMethodOptionsPayload
 
 class PaymentIntentService(BaseService):
-    PATH = 'payment_intents'
+    PATH: Final = 'payment_intents'
 
     def __init__(self, client):
         BaseService.__init__(self, client)

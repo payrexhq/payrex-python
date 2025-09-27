@@ -1,7 +1,7 @@
 import json
 import hashlib
 import hmac
-from typing import TypedDict
+from typing import Final, TypedDict
 from typing_extensions import NotRequired
 
 from payrex import BaseService
@@ -15,7 +15,7 @@ from payrex.entities.event_entity import EventType
 from payrex.entities.listing_entity import ListingEntity
 
 class WebhookService(BaseService):
-    PATH = 'webhooks'
+    PATH: Final = 'webhooks'
 
     def __init__(self, client):
         BaseService.__init__(self, client)

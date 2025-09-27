@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import Final, TypedDict
 from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import CustomerEntity
@@ -7,7 +7,7 @@ from payrex.entities.listing_entity import ListingEntity
 from payrex.common_types import Currency
 
 class CustomerService(BaseService):
-    PATH = 'customers'
+    PATH: Final = 'customers'
 
     def __init__(self, client):
         BaseService.__init__(self, client)

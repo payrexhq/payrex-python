@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import Final, TypedDict
 from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import BillingStatementEntity
@@ -8,7 +8,7 @@ from payrex.entities.listing_entity import ListingEntity
 from payrex.common_types import Currency
 
 class BillingStatementService(BaseService):
-    PATH = 'billing_statements'
+    PATH: Final = 'billing_statements'
 
     def __init__(self, client):
         BaseService.__init__(self, client)

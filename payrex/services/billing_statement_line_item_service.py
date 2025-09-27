@@ -1,11 +1,11 @@
-from typing import TypedDict
+from typing import Final, TypedDict
 from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import BillingStatementLineItemEntity
 from payrex import DeletedEntity
 
 class BillingStatementLineItemService(BaseService):
-    PATH = 'billing_statement_line_items'
+    PATH: Final = 'billing_statement_line_items'
 
     def __init__(self, client):
         BaseService.__init__(self, client)

@@ -1,10 +1,10 @@
-from typing import TypedDict
+from typing import Final, TypedDict
 from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import PaymentEntity
 
 class PaymentService(BaseService):
-    PATH = 'payments'
+    PATH: Final = 'payments'
 
     def __init__(self, client):
         BaseService.__init__(self, client)

@@ -1,9 +1,9 @@
-from typing import TypedDict
+from typing import Final, TypedDict
 from payrex import BaseService
 from payrex import CustomerSessionEntity
 
 class CustomerSessionService(BaseService):
-    PATH = 'customer_sessions'
+    PATH: Final = 'customer_sessions'
 
     def __init__(self, client):
         BaseService.__init__(self, client)
