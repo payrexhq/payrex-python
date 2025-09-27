@@ -1,7 +1,7 @@
 from typing import Literal, Optional, TypedDict
 from typing_extensions import NotRequired
 
-from payrex.type_defs import Currency, PaymentMethod
+from payrex.type_defs import Currency, PaymentMethod, PaymentMethodOptions
 
 
 class PaymentIntentEntity:
@@ -30,16 +30,6 @@ class PaymentIntentEntity:
         self.capture_before_at = data.get('capture_before_at')
         self.created_at: int = data.get('created_at')
         self.updated_at: int = data.get('updated_at')
-
-
-class PaymentMethodOptions(TypedDict):
-    card: 'PaymentMethodCard'
-
-
-class PaymentMethodCard(TypedDict):
-    capture_type: NotRequired[Literal['automatic', 'manual']]
-    allowed_bins: NotRequired[list[str]]
-    allowed_funding: NotRequired[Literal['credit', 'debit']]
 
 
 class NextAction(TypedDict):
