@@ -13,7 +13,7 @@ class CheckoutSessionEntity:
         self.client_secret: str = data.get('client_secret')
         self.status: Literal["active", "completed", "expired"] = data.get('status')
         self.currency: Currency = data.get('currency')
-        self.line_items: list[LineItem] = data.get('line_items')
+        self.line_items: list[CheckoutSessionLineItem] = data.get('line_items')
         self.livemode: bool = data.get('livemode')
         self.url: str = data.get('url')
         self.payment_intent: dict[str, Any] = data.get('payment_intent') # TODO: payment_intent type hint
@@ -28,7 +28,7 @@ class CheckoutSessionEntity:
         self.updated_at: int = data.get('updated_at')
 
 
-class LineItem(TypedDict):
+class CheckoutSessionLineItem(TypedDict):
     id: str
     resource: Literal["checkout_session_line_item"]
     name: str
