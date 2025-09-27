@@ -1,3 +1,4 @@
+from typing import Optional
 from payrex.type_defs import Currency
 
 
@@ -11,7 +12,7 @@ class CustomerEntity:
         self.email: str = data.get('email')
         self.livemode: bool = data.get('livemode')
         self.name: str = data.get('name')
-        self.metadata: dict[str, str] | None = data.get('metadata')
+        self.metadata: Optional[dict[str, str]] = data.get('metadata')
         self.next_billing_statement_sequence_number: str = data.get('next_billing_statement_sequence_number')
         self.created_at: int = data.get('created_at')
         self.updated_at: int = data.get('updated_at')

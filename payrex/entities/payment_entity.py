@@ -1,4 +1,4 @@
-from typing import Literal, TypedDict
+from typing import Literal, Optional, TypedDict
 from payrex.type_defs import Currency, PaymentMethod
 
 
@@ -11,10 +11,10 @@ class PaymentEntity:
         self.amount_refunded: int = data.get('amount_refunded')
         self.billing: Billing = data.get('billing')
         self.currency: Currency = data.get('currency')
-        self.description: str | None = data.get('description')
+        self.description: Optional[str] = data.get('description')
         self.fee: int = data.get('fee')
         self.livemode: bool = data.get('livemode')
-        self.metadata: dict[str, str] | None = data.get('metadata')
+        self.metadata: Optional[dict[str, str]] = data.get('metadata')
         self.net_amount: int = data.get('net_amount')
         self.payment_intent_id: str = data.get('payment_intent_id')
         self.status: Literal["paid", "failed"] = data.get('status')
@@ -28,13 +28,13 @@ class PaymentEntity:
 class Billing(TypedDict):
     name: str
     email: str
-    phone: str | None
+    phone: Optional[str]
     address: 'Address'
 
 
 class Address(TypedDict):
     line1: str
-    line2: str | None
+    line2: Optional[str]
     city: str
     state: str
     postal_code: str

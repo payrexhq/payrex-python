@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 
 from payrex.type_defs import Currency
 
@@ -12,7 +12,7 @@ class RefundEntity:
         self.currency: Currency = data.get('currency')
         self.livemode: bool = data.get('livemode')
         self.status: Literal["succeeded", "failed", "pending"] = data.get('status')
-        self.description: str | None = data.get('description')
+        self.description: Optional[str] = data.get('description')
         self.reason: Literal[
             "fraudulent",
             "requested_by_customer",
@@ -23,8 +23,8 @@ class RefundEntity:
             "wrong_product_received",
             "others",
         ] = data.get('reason')
-        self.remarks: str | None = data.get('remarks')
+        self.remarks: Optional[str] = data.get('remarks')
         self.payment_id: str = data.get('payment_id')
-        self.metadata: dict[str, str] | None = data.get('metadata')
+        self.metadata: Optional[dict[str, str]] = data.get('metadata')
         self.created_at: int = data.get('created_at')
         self.updated_at: int = data.get('updated_at')
