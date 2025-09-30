@@ -3,7 +3,7 @@ from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import CheckoutSessionEntity
 from payrex.entities.listing_entity import ListingEntity
-from payrex.common_types import Currency, PaymentMethod, PaymentMethodOptionsPayload
+from payrex.common_types import Currency, PaymentMethod, PaymentMethodOptions
 
 class CheckoutSessionService(BaseService):
     PATH: Final = 'checkout_sessions'
@@ -57,7 +57,7 @@ class CreateCheckoutSessionPayload(TypedDict):
     billing_details_collection: NotRequired[str]
     description: NotRequired[str]
     submit_type: NotRequired[str]
-    payment_method_options: NotRequired[PaymentMethodOptionsPayload]
+    payment_method_options: NotRequired[PaymentMethodOptions]
 
 
 

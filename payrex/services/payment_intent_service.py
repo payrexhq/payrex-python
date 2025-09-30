@@ -2,7 +2,7 @@ from typing import Final, Literal, TypedDict
 from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import PaymentIntentEntity
-from payrex.common_types import Currency, PaymentMethod, PaymentMethodOptionsPayload
+from payrex.common_types import Currency, PaymentMethod, PaymentMethodOptions
 
 class PaymentIntentService(BaseService):
     PATH: Final = 'payment_intents'
@@ -51,6 +51,6 @@ class CreatePaymentIntentPayload(TypedDict):
     payment_methods: list[PaymentMethod]
     currency: Currency
     description: NotRequired[str]
-    payment_method_options: NotRequired[PaymentMethodOptionsPayload]
+    payment_method_options: NotRequired[PaymentMethodOptions]
     statement_descriptor: NotRequired[str]
     metadata: NotRequired[dict[str, str]]
