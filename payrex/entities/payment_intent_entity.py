@@ -26,7 +26,7 @@ class PaymentIntentEntity:
             'awaiting_payment_method', 'awaiting_next_action', 'processing', 'succeeded'
         ] = data.get('status')
         self.next_action: Optional[NextAction] = data.get('next_action')
-        self.return_url: str = data.get('return_url')
+        self.return_url: Optional[str] = data.get('return_url')
         self.capture_before_at = data.get('capture_before_at')
         self.created_at: int = data.get('created_at')
         self.updated_at: int = data.get('updated_at')
