@@ -1,6 +1,8 @@
 import json
 import hashlib
 import hmac
+from typing import Final, TypedDict
+from typing_extensions import NotRequired
 
 from payrex import BaseService
 from payrex import WebhookEntity
@@ -9,14 +11,16 @@ from payrex import ValueUnexpectedException
 from payrex import SignatureInvalidException
 from payrex import ApiResource
 from payrex import EventEntity
+from payrex.entities.event_entity import EventType
+from payrex.entities.listing_entity import ListingEntity
 
 class WebhookService(BaseService):
-    PATH = 'webhooks'
+    PATH: Final = 'webhooks'
 
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload):
+    def create(self, payload: 'CreateWebhookPayload') -> WebhookEntity:
         return self.request(
             method='post',
             object=WebhookEntity,
@@ -24,7 +28,7 @@ class WebhookService(BaseService):
             payload=payload
         )
 
-    def update(self, id, payload):
+    def update(self, id: str, payload: 'UpdateWebhookPayload') -> WebhookEntity:
         return self.request(
             method='put',
             object=WebhookEntity,
@@ -32,7 +36,7 @@ class WebhookService(BaseService):
             payload=payload
         )
 
-    def list(self, payload = {}):
+    def list(self, payload: 'ListWebhooksPayload' = {}) -> ListingEntity[WebhookEntity]:
         return self.request(
             method='get',
             object=WebhookEntity,
@@ -41,7 +45,7 @@ class WebhookService(BaseService):
             is_list=True
         )
 
-    def retrieve(self, id):
+    def retrieve(self, id: str) -> WebhookEntity:
         return self.request(
             method='get',
             object=WebhookEntity,
@@ -49,7 +53,7 @@ class WebhookService(BaseService):
             payload={}
         )
 
-    def enable(self, id):
+    def enable(self, id: str) -> WebhookEntity:
         return self.request(
             method='post',
             object=WebhookEntity,
@@ -57,7 +61,7 @@ class WebhookService(BaseService):
             payload={}
         )
 
-    def disable(self, id):
+    def disable(self, id: str) -> WebhookEntity:
         return self.request(
             method='post',
             object=WebhookEntity,
@@ -65,7 +69,7 @@ class WebhookService(BaseService):
             payload={}
         )
 
-    def delete(self, id):
+    def delete(self, id: str) -> DeletedEntity:
         return self.request(
             method='delete',
             object=DeletedEntity,
@@ -73,7 +77,7 @@ class WebhookService(BaseService):
             payload={}
         )
 
-    def parse_event(self, payload, signature_header, webhook_secret_key):
+    def parse_event(self, payload: str, signature_header: str, webhook_secret_key: str) -> EventEntity:
         if not isinstance(signature_header, str):
             raise ValueUnexpectedException('The signature must be a string.')
 
@@ -96,3 +100,23 @@ class WebhookService(BaseService):
         api_resource = ApiResource(json.loads(payload))
 
         return EventEntity(api_resource)
+
+
+class CreateWebhookPayload(TypedDict):
+    url: str
+    description: NotRequired[str]
+    events: list[EventType]
+
+
+class UpdateWebhookPayload(TypedDict):
+    url: NotRequired[str]
+    description: NotRequired[str]
+    events: NotRequired[list[EventType]]
+
+
+class ListWebhooksPayload(TypedDict):
+    limit: NotRequired[int]
+    before: NotRequired[str]
+    after: NotRequired[str]
+    url: NotRequired[str]
+    description: NotRequired[str]

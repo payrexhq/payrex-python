@@ -1,12 +1,26 @@
+from typing import Literal, TypedDict
+
+
 class PayoutEntity:
     def __init__(self, api_resource):
         data = api_resource.data
 
-        self.id = data.get('id')
-        self.amount = data.get('amount')
-        self.destination = data.get('destination')
-        self.livemode = data.get('livemode')
-        self.net_amount = data.get('net_amount')
-        self.status = data.get('status')
-        self.created_at = data.get('created_at')
-        self.updated_at = data.get('updated_at')
+        self.id: str = data.get('id')
+        self.amount: int = data.get('amount')
+        self.destination: PayoutDestination = data.get('destination')
+        self.livemode: bool = data.get('livemode')
+        self.net_amount: int = data.get('net_amount')
+        self.status: Literal[
+            "pending",
+            "in_transit",
+            "failed",
+            "successful",
+        ] = data.get('status')
+        self.created_at: int = data.get('created_at')
+        self.updated_at: int = data.get('updated_at')
+
+
+class PayoutDestination(TypedDict):
+    account_name: str
+    account_number: str
+    bank_name: str

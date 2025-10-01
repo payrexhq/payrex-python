@@ -1,14 +1,19 @@
+from typing import Final, TypedDict
+from typing_extensions import NotRequired
 from payrex import BaseService
 from payrex import BillingStatementEntity
 from payrex import DeletedEntity
+from payrex.entities.billing_statement_entity import PaymentSettings
+from payrex.entities.listing_entity import ListingEntity
+from payrex.common_types import Currency
 
 class BillingStatementService(BaseService):
-    PATH = 'billing_statements'
+    PATH: Final = 'billing_statements'
 
     def __init__(self, client):
         BaseService.__init__(self, client)
 
-    def create(self, payload):
+    def create(self, payload: 'CreateBillingStatementPayload') -> BillingStatementEntity:
         return self.request(
             method='post',
             object=BillingStatementEntity,
@@ -16,7 +21,7 @@ class BillingStatementService(BaseService):
             payload=payload
         )
 
-    def retrieve(self, id):
+    def retrieve(self, id: str) -> BillingStatementEntity:
         return self.request(
             method='get',
             object=BillingStatementEntity,
@@ -24,7 +29,7 @@ class BillingStatementService(BaseService):
             payload={}
         )
 
-    def list(self, payload = {}):
+    def list(self, payload: 'ListBillingStatementsPayload' = {}) -> ListingEntity[BillingStatementEntity]:
         return self.request(
             method='get',
             object=BillingStatementEntity,
@@ -33,7 +38,7 @@ class BillingStatementService(BaseService):
             is_list=True
         )
 
-    def update(self, id, payload):
+    def update(self, id: str, payload: 'UpdateBillingStatementPayload') -> BillingStatementEntity:
         return self.request(
             method='put',
             object=BillingStatementEntity,
@@ -41,7 +46,7 @@ class BillingStatementService(BaseService):
             payload=payload
         )
 
-    def delete(self, id):
+    def delete(self, id: str) -> DeletedEntity:
         return self.request(
             method='delete',
             object=DeletedEntity,
@@ -49,7 +54,7 @@ class BillingStatementService(BaseService):
             payload={}
         )
 
-    def finalize(self, id):
+    def finalize(self, id: str) -> BillingStatementEntity:
         return self.request(
             method='post',
             object=BillingStatementEntity,
@@ -57,7 +62,7 @@ class BillingStatementService(BaseService):
             payload={}
         )
 
-    def send(self, id):
+    def send(self, id: str) -> None:
         return self.request(
             method='post',
             object=None,
@@ -65,7 +70,7 @@ class BillingStatementService(BaseService):
             payload={}
         )
 
-    def void(self, id):
+    def void(self, id: str) -> BillingStatementEntity:
         return self.request(
             method='post',
             object=BillingStatementEntity,
@@ -73,10 +78,33 @@ class BillingStatementService(BaseService):
             payload={}
         )
 
-    def mark_uncollectible(self, id):
+    def mark_uncollectible(self, id: str):
         return self.request(
             method='post',
             object=BillingStatementEntity,
             path=f'{self.PATH}/{id}/mark_uncollectible',
             payload={}
         )
+
+
+class CreateBillingStatementPayload(TypedDict):
+    customer_id: str
+    currency: Currency
+    description: NotRequired[str]
+    billing_details_collection: NotRequired[str]
+    payment_settings: PaymentSettings
+    metadata: NotRequired[dict[str, str]]
+
+
+class ListBillingStatementsPayload(TypedDict):
+    limit: NotRequired[int]
+    before: NotRequired[str]
+    after: NotRequired[str]
+
+
+class UpdateBillingStatementPayload(TypedDict):
+    customer_id: NotRequired[str]
+    description: NotRequired[str]
+    billing_details_collection: NotRequired[str]
+    payment_settings: NotRequired[PaymentSettings]
+    metadata: NotRequired[dict[str, str]]

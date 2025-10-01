@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.8.0] - 2025-09-28
+
+- Add type hints.
+
 ## [1.7.3] - 2025-09-05
 
 - Resolve billing statement url.
