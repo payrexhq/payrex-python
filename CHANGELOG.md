@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.4] - 2026-02-25
+
+- Return page_session on Payment resource.
+
 ## [1.7.3] - 2025-09-05
 
 - Resolve billing statement url.
