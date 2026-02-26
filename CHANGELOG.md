@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.7.4] - 2026-02-25
+## [1.7.4] - 2026-02-26
 
 - Return page_session on Payment resource.
 
