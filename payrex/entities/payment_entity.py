@@ -17,5 +17,6 @@ class PaymentEntity:
         self.customer = data.get('customer')
         self.payment_method = data.get('payment_method')
         self.refunded = data.get('refunded')
+        self.page_session = data.get('page_session')
         self.created_at = data.get('created_at')
         self.updated_at = data.get('updated_at')
