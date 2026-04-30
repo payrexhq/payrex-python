@@ -3,9 +3,9 @@ from pathlib import Path
 
 setup(
     name='payrex-python',
-    version='1.7.4',
+    version='1.7.6',
     author='PayRex',
-    author_email='support@payrexhq.com',
+    author_email='support@payrex.com',
     description='PayRex Python Library',
     long_description=(Path(__file__).parent / 'README.md').read_text(),
     long_description_content_type='text/markdown',

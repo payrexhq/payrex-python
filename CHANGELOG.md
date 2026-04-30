@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.6] - 2026-04-30
+
+- Support update payment intent.
+
 ## [1.7.4] - 2026-03-02
 
 - Return page_session on Payment resource.

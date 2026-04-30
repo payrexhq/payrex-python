@@ -21,6 +21,14 @@ class PaymentIntentService(BaseService):
             path=f'{self.PATH}/{id}/capture',
             payload=payload
         )
+
+    def update(self, id, payload):
+        return self.request(
+            method='put',
+            object=PaymentIntentEntity,
+            path=f'{self.PATH}/{id}',
+            payload=payload
+        )
     
     def create(self, payload):
         return self.request(
