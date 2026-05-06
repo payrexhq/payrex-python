@@ -7,6 +7,7 @@ from payrex import CustomerService
 from payrex import BillingStatementService
 from payrex import BillingStatementLineItemService
 from payrex import PaymentIntentService
+from payrex import SetupIntentService
 from payrex import PaymentService
 from payrex import PayoutService
 from payrex import RefundService

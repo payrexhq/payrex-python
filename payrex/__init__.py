@@ -12,6 +12,7 @@ from payrex.http_client import HttpClient
 
 from payrex.entities.payment_entity import PaymentEntity
 from payrex.entities.payment_intent_entity import PaymentIntentEntity
+from payrex.entities.setup_intent_entity import SetupIntentEntity
 from payrex.entities.payout_entity import PayoutEntity
 from payrex.entities.payout_transaction_entity import PayoutTransactionEntity
 from payrex.entities.checkout_session_entity import CheckoutSessionEntity
@@ -34,6 +35,7 @@ from payrex.services.billing_statement_line_item_service import BillingStatement
 from payrex.services.payment_service import PaymentService
 from payrex.services.payout_service import PayoutService
 from payrex.services.payment_intent_service import PaymentIntentService
+from payrex.services.setup_intent_service import SetupIntentService
 from payrex.services.refund_service import RefundService
 from payrex.services.webhook_service import WebhookService
 from payrex.services.service_factory import ServiceFactory
