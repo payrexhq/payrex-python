@@ -1,6 +1,10 @@
 # Changelog
 
-## [1.7.6] - 2026-04-30
+## [1.7.8] - 2026-05-06
+
+- Support setup intents
+
+## [1.7.7] - 2026-04-30
 
 - Support update payment intent.
 
