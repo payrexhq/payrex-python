@@ -1,5 +1,6 @@
 from payrex import BaseService
 from payrex import CustomerEntity
+from payrex import PaymentMethodEntity
 from payrex import DeletedEntity
 
 class CustomerService(BaseService):
@@ -31,6 +32,23 @@ class CustomerService(BaseService):
             path=self.PATH,
             payload=payload,
             is_list=True
+        )
+
+    def list_payment_methods(self, id, payload = {}):
+        return self.request(
+            method='get',
+            object=PaymentMethodEntity,
+            path=f'{self.PATH}/{id}/payment_methods',
+            payload=payload,
+            is_list=True
+        )
+
+    def delete_payment_method(self, id, payload = {}):
+        return self.request(
+            method='delete',
+            object=DeletedEntity,
+            path=f'{self.PATH}/{id}/payment_methods/{payload["payment_method_id"]}',
+            payload={}
         )
 
     def update(self, id, payload):

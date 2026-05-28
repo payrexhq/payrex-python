@@ -12,6 +12,7 @@ from payrex.http_client import HttpClient
 
 from payrex.entities.payment_entity import PaymentEntity
 from payrex.entities.payment_intent_entity import PaymentIntentEntity
+from payrex.entities.payment_method_entity import PaymentMethodEntity
 from payrex.entities.setup_intent_entity import SetupIntentEntity
 from payrex.entities.payout_entity import PayoutEntity
 from payrex.entities.payout_transaction_entity import PayoutTransactionEntity

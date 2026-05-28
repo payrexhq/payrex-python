@@ -3,7 +3,7 @@ from pathlib import Path
 
 setup(
     name='payrex-python',
-    version='1.7.8',
+    version='1.7.9',
     author='PayRex',
     author_email='support@payrex.com',
     description='PayRex Python Library',
