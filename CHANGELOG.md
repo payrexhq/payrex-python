@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.8.0] - 2026-05-31
+
+- Add attach payment method to payment intent endpoint
+
 ## [1.7.9] - 2026-05-28
 
 - Support list customer payment methods endpoint.
