@@ -3,7 +3,7 @@ class CustomerSessionEntity:
         data = api_resource.data
 
         self.id = data.get('id')
-        self.customer_id = data.get('customer_id')
+        self.customer = data.get('customer')
         self.client_secret = data.get('client_secret')
         self.livemode = data.get('livemode')
         self.components = data.get('components')
